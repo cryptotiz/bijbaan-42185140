@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0F6E5C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E141A" media="(prefers-color-scheme: dark)">
+<title>Carlo's Bijbaan Scout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#FBFCFD;--ink:#16202B;--muted:#5A6875;--rule:#DCE3E9;--panel:#F2F5F8;--panel2:#E9EFF4;
+  --accent:#0F6E5C;--accent-soft:#E3F0EC;--warn:#A8442A;--warn-soft:#F7E9E4;
+  --flag:#8A6D1F;--flag-soft:#F6EFDC;
+  --shadow:0 1px 2px rgba(22,32,43,.05),0 6px 20px rgba(22,32,43,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E141A;--ink:#E4EBF1;--muted:#93A2B0;--rule:#26313C;--panel:#151E27;--panel2:#1C2732;
+  --accent:#4FBFA3;--accent-soft:#122B26;--warn:#E08464;--warn-soft:#2C1A15;
+  --flag:#D6B65F;--flag-soft:#2A2416;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.3);}}
+:root[data-theme="dark"]{
+  --paper:#0E141A;--ink:#E4EBF1;--muted:#93A2B0;--rule:#26313C;--panel:#151E27;--panel2:#1C2732;
+  --accent:#4FBFA3;--accent-soft:#122B26;--warn:#E08464;--warn-soft:#2C1A15;
+  --flag:#D6B65F;--flag-soft:#2A2416;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.3);}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Public Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:17px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
+.wrap{max-width:76rem;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) clamp(1.1rem,4vw,2.5rem) 5rem;
+  display:flex;flex-direction:column;gap:clamp(2.5rem,5vw,4rem)}
+.prose{max-width:38rem}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;font-weight:600;text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(2.4rem,6vw,3.9rem);letter-spacing:-.022em}
+h2{font-size:clamp(1.6rem,3.3vw,2.15rem);letter-spacing:-.014em}
+h3{font-size:1.2rem}
+p{margin:0 0 1.05rem} p:last-child{margin-bottom:0}
+a{color:var(--accent)}
+a:focus-visible,th button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.71rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 1.1rem}
+.lede{font-size:1.18rem;color:var(--muted);max-width:36rem;margin-top:1.4rem}
+.lede strong{color:var(--ink);font-weight:500}
+.scale{background:var(--panel);border:1px solid var(--rule);border-radius:4px;
+  padding:clamp(1.5rem,3.5vw,2.4rem);box-shadow:var(--shadow)}
+.bars{display:flex;flex-direction:column;gap:1.3rem;margin:2rem 0 1.4rem}
+.bar__top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.45rem}
+.bar__who{font-weight:700;font-size:.93rem}
+.bar__amt{font-family:"IBM Plex Mono",monospace;font-size:1.3rem;font-variant-numeric:tabular-nums}
+.track{height:15px;background:var(--rule);border-radius:2px;overflow:hidden}
+.fill{height:100%;border-radius:2px}
+.f50{width:50%;background:var(--warn)} .f100{width:100%;background:var(--accent)}
+.f625{width:62.5%;background:var(--flag)} .f75{width:75%;background:var(--flag)}
+.bar__note{font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.pct{font-family:"IBM Plex Mono",monospace;color:var(--muted);font-size:.83rem;margin-left:.5rem}
+.note{border-left:3px solid var(--accent);background:var(--accent-soft);padding:1.15rem 1.35rem;border-radius:0 4px 4px 0}
+.note--warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.note p{margin-bottom:.6rem} .note p:last-child{margin-bottom:0}
+.note__h{font-family:"IBM Plex Mono",monospace;font-size:.71rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:block}
+.ask{font-family:Newsreader,Georgia,serif;font-size:clamp(1.4rem,3vw,1.85rem);font-style:italic;line-height:1.35;margin:.3rem 0 .7rem}
+/* ---- table ---- */
+.toolbar{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1.4rem 0 .8rem}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.05em;
+  padding:.2rem .5rem;border-radius:2px;white-space:nowrap;border:1px solid transparent}
+.chip--ok{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.chip--bad{background:var(--warn-soft);color:var(--warn);border-color:var(--warn)}
+.chip--warn{background:var(--flag-soft);color:var(--flag);border-color:var(--flag)}
+.chip--neutral{background:var(--panel2);color:var(--muted);border-color:var(--rule)}
+.hint{font-size:.83rem;color:var(--muted);margin-left:auto}
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--panel)}
+table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:52rem}
+th{text-align:left;padding:0;border-bottom:1px solid var(--rule);white-space:nowrap;
+  position:sticky;top:0;background:var(--panel2);z-index:1}
+th button{all:unset;cursor:pointer;display:block;width:100%;padding:.65rem .9rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.67rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);font-weight:500}
+th button:hover{color:var(--ink)}
+th.n button{text-align:right}
+th[aria-sort] button{color:var(--accent)}
+th button .ar{opacity:.35;margin-left:.35rem}
+th[aria-sort] button .ar{opacity:1}
+td{padding:.66rem .9rem;border-bottom:1px solid var(--rule);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--panel2)}
+.n{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sub{display:block;font-size:.63rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.emp{font-weight:500;max-width:15rem}
+.unk{color:var(--muted);font-weight:400;font-style:italic}
+.via{font-family:"IBM Plex Mono",monospace;font-size:.62rem;color:var(--muted);display:block;margin-top:.15rem}
+.role a{text-decoration:none;border-bottom:1px solid var(--rule)}
+.role a:hover{border-bottom-color:var(--accent)}
+.sh{font-family:"IBM Plex Mono",monospace;font-size:.6rem;color:var(--muted);
+  background:var(--panel2);padding:.08rem .3rem;border-radius:2px;margin-right:.2rem;white-space:nowrap}
+.sh--hit{color:var(--accent);background:var(--accent-soft)}
+.steps{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));margin-top:1.6rem}
+.step{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:1.2rem 1.3rem}
+.step h3{font-size:1.05rem;margin-bottom:.45rem} .step p{font-size:.89rem;color:var(--muted)}
+footer{border-top:1px solid var(--rule);padding-top:1.6rem;font-size:.83rem;color:var(--muted)}
+footer p{margin-bottom:.5rem}
+
+/* ---- mobile: the table becomes stacked cards ---- */
+.msort{display:none;gap:.5rem;align-items:center;margin:1rem 0 .4rem;flex-wrap:wrap}
+.msort label{font-family:"IBM Plex Mono",monospace;font-size:.67rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted)}
+.msort select{font-family:"Public Sans",sans-serif;font-size:1rem;padding:.5rem .6rem;
+  background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:4px;min-height:44px}
+@media (max-width:700px){
+  .msort{display:flex}
+  .hint{display:none}
+  .tw{overflow:visible;border:none;background:transparent;border-radius:0}
+  table{min-width:0;display:block}
+  #t thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  #t tbody{display:flex;flex-direction:column;gap:.7rem}
+  #t tbody tr{display:block;background:var(--panel);border:1px solid var(--rule);
+    border-radius:4px;padding:.85rem 1rem}
+  #t tbody tr:hover{background:var(--panel)}
+  #t tbody td{display:flex;gap:.6rem;border:none;padding:.16rem 0;text-align:left;
+    align-items:baseline}
+  #t tbody td::before{content:attr(data-l);font-family:"IBM Plex Mono",monospace;
+    font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    white-space:nowrap;min-width:5.2rem;flex:0 0 5.2rem}
+  #t tbody td.n{text-align:left}
+  #t td.role{font-size:1.02rem;font-weight:500;padding-bottom:.35rem;display:block}
+  #t td.role::before{display:block;margin-bottom:.15rem}
+  #t td.emp{padding-top:.1rem}
+  .sub{display:inline;margin-left:.4rem;text-transform:none;letter-spacing:0}
+  .via{display:inline;margin-left:.4rem}
+  .emp{max-width:none}
+  h1{font-size:clamp(2rem,9vw,2.6rem)}
+  .bar__amt{font-size:1.12rem}
+  .bar__who{font-size:.86rem}
+  .wrap{gap:2.2rem}
+  .ask{font-size:1.25rem}
+  body{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">Amsterdam &middot; bijbaan &middot; 27 August 2026</p>
+  <h1>Carlo's Bijbaan Scout</h1>
+  <p class="lede">Every job below advertises a wage. <strong>Almost none of them advertise
+  Carlo's.</strong> Dutch minimum wage is scaled by age, and eighteen is the worst rung on the
+  ladder, so the number in the ad usually belongs to somebody older.</p>
+</header>
+
+<section class="scale">
+  <h2>What the law actually pays Carlo</h2>
+  <p style="color:var(--muted);max-width:36rem">Statutory gross minimum per hour. Same job, same
+  shift, same till.</p>
+  <div class="bars">
+    <div><div class="bar__top"><span class="bar__who">Now, at 18<span class="pct">50%</span></span>
+      <span class="bar__amt" style="color:var(--warn)">&euro;7.50</span></div>
+      <div class="track"><div class="fill f50"></div></div></div>
+    <div><div class="bar__top"><span class="bar__who">Anyone 21 or over<span class="pct">100%</span></span>
+      <span class="bar__amt" style="color:var(--accent)">&euro;14.99</span></div>
+      <div class="track"><div class="fill f100"></div></div></div>
+    <div><div class="bar__top"><span class="bar__who">From 1 January 2027<span class="pct">62.5%</span></span>
+      <span class="bar__amt" style="color:var(--flag)">&euro;9.37</span></div>
+      <div class="track"><div class="fill f625"></div></div></div>
+    <div><div class="bar__top"><span class="bar__who">From 30 April 2027, at 19<span class="pct">75%</span></span>
+      <span class="bar__amt" style="color:var(--flag)">&euro;11.24</span></div>
+      <div class="track"><div class="fill f75"></div></div>
+      <div class="bar__note"><strong>Two raises are already scheduled.</strong> The band rises on
+      1 January, and he turns 19 on 30 April. <strong>+50% by the end of April</strong>, arriving by
+      law, nothing to negotiate. Any rate agreed now is worth revisiting on both dates, which is a
+      reason not to lock into a long fixed arrangement.</div></div>
+  </div>
+  <div class="note"><span class="note__h">Worth knowing</span>
+    <p>There is <strong>no earnings limit</strong>. DUO: <em>"Vanaf 2020 mag u onbeperkt
+    bijverdienen. Er geldt geen bijverdiengrens."</em> Nothing is clawed back. But his timetable
+    caps him near 16 hours a week, so <strong>the rate is the only thing that can move</strong>.</p>
+  </div>
+</section>
+
+<section class="prose">
+  <div class="note note--warn"><span class="note__h">The one question</span>
+    <p class="ask">"Wat is het uurloon voor iemand van 18?"</p>
+    <p>Ask it in the first message, every time. It costs nothing, it filters out the &euro;7.50 employers
+    in one exchange, and it is an ordinary question in the Dutch market. The age scale is public law,
+    not a negotiation. No posting below answers it.</p>
+  </div>
+</section>
+
+<section>
+  <h2 style="margin-bottom:.5rem">11 worth asking about</h2>
+  <p style="color:var(--muted);max-width:40rem">From 180 Amsterdam postings, filtered to what fits
+  16 hours a week within 15&nbsp;km of 1062&nbsp;BV. Full-time roles, survey panels and long commutes
+  are already gone.</p>
+  <div class="msort">
+    <label for="ms">Sort by</label>
+    <select id="ms">
+      <option value="tag">What he&rsquo;d actually be paid</option>
+      <option value="wage">Highest rate</option>
+      <option value="hours">Fewest hours</option>
+      <option value="km">Nearest home</option>
+      <option value="shifts">Weekend / evening first</option>
+      <option value="employer">Employer A&ndash;Z</option>
+    </select>
+  </div>
+  <div class="toolbar"><span class="chip chip--ok">Above the adult minimum</span><span class="chip chip--neutral">No wage stated</span><span class="chip chip--bad">Age-scaled</span><span class="chip chip--warn">Unreliable figure</span><span class="chip chip--warn">At the statutory floor</span><span class="hint">Click any column heading to sort</span></div>
+  <div class="tw"><table id="t">
+    <thead><tr>
+      <th data-k="employer"><button type="button">Employer<span class="ar">&#8597;</span></button></th>
+      <th data-k="title"><button type="button">Role<span class="ar">&#8597;</span></button></th>
+      <th data-k="tag"><button type="button">Verdict<span class="ar">&#8597;</span></button></th>
+      <th class="n" data-k="wage"><button type="button">Rate<span class="ar">&#8597;</span></button></th>
+      <th class="n" data-k="hours"><button type="button">Hours<span class="ar">&#8597;</span></button></th>
+      <th class="n" data-k="km"><button type="button">Distance<span class="ar">&#8597;</span></button></th>
+      <th data-k="shifts"><button type="button">Shifts<span class="ar">&#8597;</span></button></th>
+    </tr></thead>
+    <tbody><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/7759683-parttime-verkoopmedewerker-odido-in-amsterdam" target="_blank" rel="noopener">Verkoopmedewerker</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;17.93&ndash;20.93<span class='sub'>stated</span></td><td class="n" data-l="Hours">16&ndash;20h</td><td class="n" data-l="Distance">3.6 km<span class="sub">~18 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Butternut Box</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/3020134-junior-sales-medewerker-bij-butternut-box" target="_blank" rel="noopener">Junior Sales Medewerker</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;17.91<span class='sub'>stated</span></td><td class="n" data-l="Hours">16&ndash;32h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Butternut Box</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/6067890-callcenter-medewerker-bij-butternut-box" target="_blank" rel="noopener">Callcenter medewerker</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;17.91<span class='sub'>stated</span></td><td class="n" data-l="Hours">1&ndash;40h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh ">holiday</span><span class="sh ">homework</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Butternut Box</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/3886344-event-brand-ambassador-bij-butternut-box" target="_blank" rel="noopener">Event Brand Ambassador</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;17.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">16&ndash;32h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Butternut Box</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/6066787-flexibele-parttime-sales-medewerker" target="_blank" rel="noopener">Flexibele Parttime Sales Medewerker</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;17.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">1&ndash;40h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh ">holiday</span><span class="sh ">homework</span></td></tr><tr><td class="emp" data-l="Employer">ASA Talent</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/7980328-afspraken-planner-bijbaan" target="_blank" rel="noopener">Commercieel medewerker</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;17.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">6h</td><td class="n" data-l="Distance">1.8 km<span class="sub">~9 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/8299518-parttime-retentie-medewerker-bij-retentie-medewerker-in-amsterdam" target="_blank" rel="noopener">Retentie Medewerker</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;16.82<span class='sub'>stated</span></td><td class="n" data-l="Hours">16h</td><td class="n" data-l="Distance">3.9 km<span class="sub">~19 min bike</span></td><td data-l="Shifts"><span class="sh ">homework</span></td></tr><tr><td class="emp" data-l="Employer">Mediahuis Nrc<span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/8299243-parttime-klantenservice-medewerker-bij-mediahuis-nrc-in-amsterdam" target="_blank" rel="noopener">Klantenservice medewerker</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;16.82<span class='sub'>stated</span></td><td class="n" data-l="Hours">16&ndash;24h</td><td class="n" data-l="Distance">3.9 km<span class="sub">~19 min bike</span></td><td data-l="Shifts"><span class="sh ">homework</span></td></tr><tr><td class="emp" data-l="Employer">Fonky</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/3233769-bijbaan-promotie-medewerker-bij-fonky-in-amsterdam" target="_blank" rel="noopener">Promotie medewerker</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;16.00&ndash;30.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">6&ndash;24h</td><td class="n" data-l="Distance">4.9 km<span class="sub">~24 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Fonky</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/3233771-bijbaan-sales-agent-bij-fonky-in-amsterdam" target="_blank" rel="noopener">Sales Medewerker</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;16.00&ndash;30.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">6&ndash;24h</td><td class="n" data-l="Distance">4.9 km<span class="sub">~24 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Vgz<span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/7634901-thuiswerken-als-klantenservice-medewerker-bij-vgz" target="_blank" rel="noopener">Klantenservice Medewerker</a></td><td data-l="Verdict"><span class="chip chip--ok">Above the adult minimum</span></td><td class="n" data-l="Rate">&euro;15.85<span class='sub'>stated</span></td><td class="n" data-l="Hours">16&ndash;40h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh ">homework</span></td></tr><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/8259493-parttime-merkambassadeur-in-amsterdam" target="_blank" rel="noopener">Merkambassadeur</a></td><td data-l="Verdict"><span class="chip chip--neutral">No wage stated</span></td><td class="n" data-l="Rate">&mdash;</td><td class="n" data-l="Hours">8&ndash;40h</td><td class="n" data-l="Distance">1.8 km<span class="sub">~9 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Flink</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/5018523-bike-courier" target="_blank" rel="noopener">Postbezorger</a></td><td data-l="Verdict"><span class="chip chip--neutral">No wage stated</span></td><td class="n" data-l="Rate">&mdash;</td><td class="n" data-l="Hours">&mdash;</td><td class="n" data-l="Distance">4.6 km<span class="sub">~22 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">Hotelprofessionals - De L&amp;#039;Europe Amsterdam</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/6955525-oproepkracht-bediening-0-uren" target="_blank" rel="noopener">Horeca / Catering</a></td><td data-l="Verdict"><span class="chip chip--neutral">No wage stated</span></td><td class="n" data-l="Rate">&mdash;</td><td class="n" data-l="Hours">&mdash;</td><td class="n" data-l="Distance">3.9 km<span class="sub">~19 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">Hotelprofessionals - Hotel Asterisk</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/7489942-parttime-receptionist-e-2-days" target="_blank" rel="noopener">Horeca / Catering</a></td><td data-l="Verdict"><span class="chip chip--neutral">No wage stated</span></td><td class="n" data-l="Rate">&mdash;</td><td class="n" data-l="Hours">&mdash;</td><td class="n" data-l="Distance">3.7 km<span class="sub">~18 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">Hotelprofessionals - Leonardo Boutique Museumhotel Amsterdam City Center</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/7649892-host-3-nights-a-week-pt" target="_blank" rel="noopener">HOST ( 3 NIGHTS A WEEK ) PT</a></td><td data-l="Verdict"><span class="chip chip--neutral">No wage stated</span></td><td class="n" data-l="Rate">&mdash;</td><td class="n" data-l="Hours">&mdash;</td><td class="n" data-l="Distance">3 km<span class="sub">~15 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">Vermaat</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/7961398-zelfstandig-werkend-kok-rijksmuseum" target="_blank" rel="noopener">Horeca medewerker</a></td><td data-l="Verdict"><span class="chip chip--neutral">No wage stated</span></td><td class="n" data-l="Rate">&mdash;</td><td class="n" data-l="Hours">&mdash;</td><td class="n" data-l="Distance">3.2 km<span class="sub">~16 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">Hotelprofessionals - Clayton Hotel Amsterdam American</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/8100420-waiter-0-hours-part-time-weekend-focus" target="_blank" rel="noopener">Waiter (0 hours: Part-Time / Weekend Focus)</a></td><td data-l="Verdict"><span class="chip chip--neutral">No wage stated</span></td><td class="n" data-l="Rate">&mdash;</td><td class="n" data-l="Hours">&mdash;</td><td class="n" data-l="Distance">2.8 km<span class="sub">~14 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">Vermaat</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/8136561-banquetingmedewerker-rijksmuseum" target="_blank" rel="noopener">Banquetingmedewerker Rijksmuseum</a></td><td data-l="Verdict"><span class="chip chip--neutral">No wage stated</span></td><td class="n" data-l="Rate">&mdash;</td><td class="n" data-l="Hours">&mdash;</td><td class="n" data-l="Distance">3.2 km<span class="sub">~16 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">Vermaat</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/8259594-afwasser-rijksmuseum" target="_blank" rel="noopener">Cateringmedewerker</a></td><td data-l="Verdict"><span class="chip chip--neutral">No wage stated</span></td><td class="n" data-l="Rate">&mdash;</td><td class="n" data-l="Hours">&mdash;</td><td class="n" data-l="Distance">3.2 km<span class="sub">~16 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/5051273-direct-start-fietskoerier-e-bike-voor-flink-boodschappenbezorging" target="_blank" rel="noopener">Postbezorger</a></td><td data-l="Verdict"><span class="chip chip--neutral">No wage stated</span></td><td class="n" data-l="Rate">&mdash;</td><td class="n" data-l="Hours">1&ndash;40h</td><td class="n" data-l="Distance">5.5 km<span class="sub">~27 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">FourParties</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/5448718-allround-hospitality-medewerker-bij-hotel-okura-amsterdam" target="_blank" rel="noopener">Allround hospitality medewerker</a></td><td data-l="Verdict"><span class="chip chip--bad">Age-scaled</span></td><td class="n" data-l="Rate">&euro;17.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">8&ndash;32h</td><td class="n" data-l="Distance">3.6 km<span class="sub">~18 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">FourParties</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/5448720-high-end-horecamedewerker-amsterdam" target="_blank" rel="noopener">High end horecamedewerker</a></td><td data-l="Verdict"><span class="chip chip--bad">Age-scaled</span></td><td class="n" data-l="Rate">&euro;17.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">8&ndash;32h</td><td class="n" data-l="Distance">3.6 km<span class="sub">~18 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Post NL</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/8335407-parttime-pakketbezorger-licht-elektrisch-vrachtvoertuig" target="_blank" rel="noopener">Postbezorger</a></td><td data-l="Verdict"><span class="chip chip--bad">Age-scaled</span></td><td class="n" data-l="Rate">&euro;14.99<span class='sub'>stated</span></td><td class="n" data-l="Hours">&mdash;</td><td class="n" data-l="Distance">6.6 km<span class="sub">~32 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">CSU</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/6882549-vakantiewerk-schoonmaak" target="_blank" rel="noopener">Schoonmaakster</a></td><td data-l="Verdict"><span class="chip chip--bad">Age-scaled</span></td><td class="n" data-l="Rate">&euro;14.39&ndash;18.62<span class='sub'>stated</span></td><td class="n" data-l="Hours">1&ndash;40h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Tzorg</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/6882560-vakantiewerk-huishoudelijke-hulp-in-jouw-regio" target="_blank" rel="noopener">Huishoudelijke hulp</a></td><td data-l="Verdict"><span class="chip chip--bad">Age-scaled</span></td><td class="n" data-l="Rate">&euro;13.50&ndash;17.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">1&ndash;40h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/8249450-loop-jij-zonder-moeite-met-een-dienblad-medewerkers-gezocht-in-amsterdam" target="_blank" rel="noopener">Medewerker</a></td><td data-l="Verdict"><span class="chip chip--bad">Age-scaled</span></td><td class="n" data-l="Rate">&euro;7.50&ndash;15.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">8&ndash;40h</td><td class="n" data-l="Distance">4.6 km<span class="sub">~22 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">De H M<span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/8250047-werk-avonddiensten-bij-de-h-m-in-amsterdam-als-supportmedewerker" target="_blank" rel="noopener">Supportmedewerker</a></td><td data-l="Verdict"><span class="chip chip--bad">Age-scaled</span></td><td class="n" data-l="Rate">&euro;7.50&ndash;14.99<span class='sub'>stated</span></td><td class="n" data-l="Hours">8&ndash;40h</td><td class="n" data-l="Distance">3.9 km<span class="sub">~19 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Pure Pet Food</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/6562875-promotiemedewerker-dierenvoeding" target="_blank" rel="noopener">Brand Ambassador</a></td><td data-l="Verdict"><span class="chip chip--warn">Unreliable figure</span></td><td class="n" data-l="Rate">&euro;12.50&ndash;50.00<span class='sub'>derived</span></td><td class="n" data-l="Hours">8&ndash;40h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Pure Pet Food</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/8136158-brand-ambassador-sales-medewerker-bij-pure-pet-food" target="_blank" rel="noopener">Sales Medewerker</a></td><td data-l="Verdict"><span class="chip chip--warn">Unreliable figure</span></td><td class="n" data-l="Rate">&euro;12.50&ndash;50.00<span class='sub'>derived</span></td><td class="n" data-l="Hours">8&ndash;40h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Hotelprofessionals</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/8061523-kom-werken-in-de-hotel-sector-bij-hotelprofessionals" target="_blank" rel="noopener">Werken in Hotellerie</a></td><td data-l="Verdict"><span class="chip chip--warn">Unreliable figure</span></td><td class="n" data-l="Rate">&euro;4.50&ndash;32.24<span class='sub'>stated</span></td><td class="n" data-l="Hours">4&ndash;40h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/2253517-work-as-a-part-time-delivery-driver-at-hellofresh-in-diemen" target="_blank" rel="noopener">Delivery driver</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;15.10&ndash;17.10<span class='sub'>stated</span></td><td class="n" data-l="Hours">14&ndash;24h</td><td class="n" data-l="Distance">9.4 km<span class="sub">~46 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Nespresso</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/4005167-verkoopmedewerker-nespresso-amstelveen" target="_blank" rel="noopener">Verkoopmedewerker</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;15.00<span class='sub'>derived</span></td><td class="n" data-l="Hours">16&ndash;32h</td><td class="n" data-l="Distance">6.6 km<span class="sub">~32 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Pamba Textielreiniging bv</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/8299311-een-leuke-bijbaan-als-chauffeur-bestelauto-in-amsterdam-bijbaan-parttime" target="_blank" rel="noopener">Chauffeur</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;15.00&ndash;17.75<span class='sub'>stated</span></td><td class="n" data-l="Hours">8&ndash;15h</td><td class="n" data-l="Distance">6.6 km<span class="sub">~32 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/8230953-boost-je-inkomen-hospitality-medewerker-op-oproepbasis-in-amsterdam" target="_blank" rel="noopener">Hospitality medewerker</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;15.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">8&ndash;40h</td><td class="n" data-l="Distance">4.6 km<span class="sub">~22 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">NS Groep N.V.</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/7594608-bijbaan-bij-julia-s-amsterdam-zuid" target="_blank" rel="noopener">Horeca medewerker</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;14.99<span class='sub'>stated</span></td><td class="n" data-l="Hours">3&ndash;10h</td><td class="n" data-l="Distance">3.3 km<span class="sub">~16 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">NS Groep N.V.</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/7594610-verkoopmedewerker-julia-s-amsterdam-zuid" target="_blank" rel="noopener">Commercieel medewerker</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;14.99<span class='sub'>stated</span></td><td class="n" data-l="Hours">8&ndash;38h</td><td class="n" data-l="Distance">3.3 km<span class="sub">~16 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">NS Groep N.V.</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/7594611-verkoopmedewerker-kiosk-amsterdam-zuid-rai" target="_blank" rel="noopener">Verkoopmedewerker</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;14.99<span class='sub'>stated</span></td><td class="n" data-l="Hours">4&ndash;32h</td><td class="n" data-l="Distance">3.3 km<span class="sub">~16 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/8238778-start-as-a-part-time-store-associate-in-amsterdam" target="_blank" rel="noopener">Store Associate</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;14.71<span class='sub'>stated</span></td><td class="n" data-l="Hours">16&ndash;20h</td><td class="n" data-l="Distance">3.6 km<span class="sub">~18 min bike</span></td><td data-l="Shifts"><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/8249449-parttime-floormanager-in-amsterdam-bijlmer" target="_blank" rel="noopener">Floormanager</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;14.45&ndash;17.49<span class='sub'>derived</span></td><td class="n" data-l="Hours">16&ndash;24h</td><td class="n" data-l="Distance">9.2 km<span class="sub">~45 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">NS Groep N.V.</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/8208316-floormanager-kiosk-amsterdam-zuid" target="_blank" rel="noopener">Horeca / Catering</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;14.45&ndash;17.49<span class='sub'>derived</span></td><td class="n" data-l="Hours">12&ndash;32h</td><td class="n" data-l="Distance">3.3 km<span class="sub">~16 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/7870922-event-security-steward-in-amsterdam-op-de-vetste-events" target="_blank" rel="noopener">Event Security</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;13.25&ndash;14.99<span class='sub'>stated</span></td><td class="n" data-l="Hours">4&ndash;12h</td><td class="n" data-l="Distance">8.6 km<span class="sub">~42 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer"><em class="unk">not stated</em><span class="via">via agency</span></td><td class="role" data-l="Role"><a href="https://www.youngcapital.nl/vacatures/8249448-parttime-steward-in-amsterdam" target="_blank" rel="noopener">Steward</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;13.25&ndash;14.99<span class='sub'>stated</span></td><td class="n" data-l="Hours">4&ndash;12h</td><td class="n" data-l="Distance">8.6 km<span class="sub">~42 min bike</span></td><td data-l="Shifts"><span class="sh sh--hit">evening</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Easy Way</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/7636977-wordt-hiker-auto-s-vervoeren-bij-easy-way" target="_blank" rel="noopener">Hiker</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;11.62&ndash;16.24<span class='sub'>stated</span></td><td class="n" data-l="Hours">1&ndash;40h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh ">holiday</span><span class="sh sh--hit">weekend</span></td></tr><tr><td class="emp" data-l="Employer">Pepperminds</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/5107490-salespromotor-promotiemedewerker-bijbaan" target="_blank" rel="noopener">Commercieel medewerker</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;11.25&ndash;18.75<span class='sub'>derived</span></td><td class="n" data-l="Hours">&mdash;</td><td class="n" data-l="Distance">13.3 km<span class="sub">~65 min bike</span></td><td data-l="Shifts"><span class="sh">not stated</span></td></tr><tr><td class="emp" data-l="Employer">Workster</td><td class="role" data-l="Role"><a href="https://www.studentjob.nl/vacatures/7427784-logistiek-medewerker" target="_blank" rel="noopener">Logistiek medewerker</a></td><td data-l="Verdict"><span class="chip chip--warn">At the statutory floor</span></td><td class="n" data-l="Rate">&euro;11.00&ndash;22.00<span class='sub'>stated</span></td><td class="n" data-l="Hours">10&ndash;30h</td><td class="n" data-l="Distance">&mdash;</td><td data-l="Shifts"><span class="sh ">holiday</span></td></tr></tbody>
+  </table></div>
+  <p style="font-size:.83rem;color:var(--muted);margin-top:.9rem">Distance is straight-line from
+  1062&nbsp;BV, not a journey time. The cycle figures apply a 1.3&times; detour factor at 16&nbsp;km/h.
+  A dash means the posting gave no location precise enough to place.</p>
+</section>
+
+<section class="prose">
+  <h2>The way around it</h2>
+  <p>The minimum wage is a rule about <em>employees</em>. It does not reach the self-employed, so on
+  a flex platform like <strong>Temper</strong> or <strong>YoungOnes</strong>, where Carlo would be a
+  ZZP'er rather than staff, the youth band does not apply to him at all.</p>
+  <p>Temper's own floor is <strong>&euro;16.00 an hour</strong>. That is <strong>2.1&times;</strong> his
+  employed floor, for the same shifts. He is 18, exactly the platform's minimum age, and Temper allows
+  <strong>one shift with no VAT number</strong>, so trying it costs nothing but an evening.</p>
+  <p>What he gives up is real: no holiday pay, no sick pay, no pension, no unemployment cover. Regular
+  work needs a KVK registration and a BTW number, though the small-business scheme removes the
+  quarterly VAT filing under about &euro;20k.</p>
+  <div class="note note--warn"><span class="note__h">And the ground is moving under it</span>
+    <p>On <strong>16 June 2026 the Amsterdam Court of Appeal ruled that Temper's workers are temp
+    staff, not self-employed</strong>, reversing a 2024 decision. Temper took it to the Supreme Court
+    in July and <strong>the ruling is suspended</strong> while that runs, so nothing has changed yet.</p>
+    <p>But temp-agency pay scales are themselves age-based. If it is upheld, the youth discount comes
+    straight back. Use it, don't bet on it: a platform account <em>and</em> an employed bijbaan.</p>
+  </div>
+</section>
+
+<section class="prose">
+  <h2>Where this actually gets won</h2>
+  <p>Scraping boards is the narrow part. It catches well-paid postings quickly and refuses the floor
+  consistently. But most Amsterdam student work never becomes a structured posting at all.</p>
+  <div class="steps">
+    <div class="step"><h3>Do one Temper shift</h3><p>The free trial shift needs no VAT number and no
+      paperwork. It answers whether the &euro;16 route is worth registering for.</p></div>
+    <div class="step"><h3>Register, don't just browse</h3><p>YoungCapital and StudentJob as a
+      candidate rather than as a website. Recruiters surface roles before they post.</p></div>
+    <div class="step"><h3>Go direct where the language pays</h3><p>Hotels, museums, Schiphol, Italian
+      restaurants. Amsterdam runs Italian-language desks year-round.</p></div>
+  </div>
+</section>
+
+<footer>
+  <p>Wage figures from rijksoverheid.nl and duo.nl; Temper terms and the June 2026 appeal ruling
+  checked 27 August 2026. Statutory rates reset every 1 January and 1 July, and the cassation is live.</p>
+  <p>Postings captured 27 August 2026 and they move fast. "Age-scaled" means the posting says so in
+  its own words. The absence of an age qualifier is not a promise of a flat rate, which is exactly why
+  the question still has to be asked.</p>
+</footer>
+</div>
+
+<script>
+const DATA = [{"employer": null, "via": true, "title": "Verkoopmedewerker", "url": "https://www.youngcapital.nl/vacatures/7759683-parttime-verkoopmedewerker-odido-in-amsterdam", "wage": 17.93, "wageTxt": "\u20ac17.93\u201320.93", "basis": "STATED", "hours": 16, "hoursTxt": "16\u201320h", "km": 3.6, "kmTxt": "3.6 km", "band": "CYCLE", "cycle": 18, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": ["evening", "weekend"], "ageQuote": null}, {"employer": "Butternut Box", "via": false, "title": "Junior Sales Medewerker", "url": "https://www.studentjob.nl/vacatures/3020134-junior-sales-medewerker-bij-butternut-box", "wage": 17.91, "wageTxt": "\u20ac17.91", "basis": "STATED", "hours": 16, "hoursTxt": "16\u201332h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": ["holiday", "weekend"], "ageQuote": null}, {"employer": "Butternut Box", "via": false, "title": "Callcenter medewerker", "url": "https://www.studentjob.nl/vacatures/6067890-callcenter-medewerker-bij-butternut-box", "wage": 17.91, "wageTxt": "\u20ac17.91", "basis": "STATED", "hours": 1, "hoursTxt": "1\u201340h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": ["holiday", "homework", "weekend"], "ageQuote": null}, {"employer": "Butternut Box", "via": false, "title": "Event Brand Ambassador", "url": "https://www.studentjob.nl/vacatures/3886344-event-brand-ambassador-bij-butternut-box", "wage": 17.0, "wageTxt": "\u20ac17.00", "basis": "STATED", "hours": 16, "hoursTxt": "16\u201332h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": ["holiday", "weekend"], "ageQuote": null}, {"employer": "Butternut Box", "via": false, "title": "Flexibele Parttime Sales Medewerker", "url": "https://www.studentjob.nl/vacatures/6066787-flexibele-parttime-sales-medewerker", "wage": 17.0, "wageTxt": "\u20ac17.00", "basis": "STATED", "hours": 1, "hoursTxt": "1\u201340h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": ["evening", "holiday", "homework"], "ageQuote": null}, {"employer": "ASA Talent", "via": false, "title": "Commercieel medewerker", "url": "https://www.studentjob.nl/vacatures/7980328-afspraken-planner-bijbaan", "wage": 17.0, "wageTxt": "\u20ac17.00", "basis": "STATED", "hours": 6, "hoursTxt": "6h", "km": 1.8, "kmTxt": "1.8 km", "band": "WALK", "cycle": 9, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": [], "ageQuote": null}, {"employer": null, "via": true, "title": "Retentie Medewerker", "url": "https://www.youngcapital.nl/vacatures/8299518-parttime-retentie-medewerker-bij-retentie-medewerker-in-amsterdam", "wage": 16.82, "wageTxt": "\u20ac16.82", "basis": "STATED", "hours": 16, "hoursTxt": "16h", "km": 3.9, "kmTxt": "3.9 km", "band": "CYCLE", "cycle": 19, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": ["homework"], "ageQuote": null}, {"employer": "Mediahuis Nrc", "via": true, "title": "Klantenservice medewerker", "url": "https://www.youngcapital.nl/vacatures/8299243-parttime-klantenservice-medewerker-bij-mediahuis-nrc-in-amsterdam", "wage": 16.82, "wageTxt": "\u20ac16.82", "basis": "STATED", "hours": 16, "hoursTxt": "16\u201324h", "km": 3.9, "kmTxt": "3.9 km", "band": "CYCLE", "cycle": 19, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": ["homework"], "ageQuote": null}, {"employer": "Fonky", "via": false, "title": "Promotie medewerker", "url": "https://www.studentjob.nl/vacatures/3233769-bijbaan-promotie-medewerker-bij-fonky-in-amsterdam", "wage": 16.0, "wageTxt": "\u20ac16.00\u201330.00", "basis": "STATED", "hours": 6, "hoursTxt": "6\u201324h", "km": 4.9, "kmTxt": "4.9 km", "band": "CYCLE", "cycle": 24, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": ["evening", "holiday", "weekend"], "ageQuote": null}, {"employer": "Fonky", "via": false, "title": "Sales Medewerker", "url": "https://www.studentjob.nl/vacatures/3233771-bijbaan-sales-agent-bij-fonky-in-amsterdam", "wage": 16.0, "wageTxt": "\u20ac16.00\u201330.00", "basis": "STATED", "hours": 6, "hoursTxt": "6\u201324h", "km": 4.9, "kmTxt": "4.9 km", "band": "CYCLE", "cycle": 24, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": ["evening", "holiday", "weekend"], "ageQuote": null}, {"employer": "Vgz", "via": true, "title": "Klantenservice Medewerker", "url": "https://www.youngcapital.nl/vacatures/7634901-thuiswerken-als-klantenservice-medewerker-bij-vgz", "wage": 15.85, "wageTxt": "\u20ac15.85", "basis": "STATED", "hours": 16, "hoursTxt": "16\u201340h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "ABOVE-MINIMUM", "tagRank": 0, "shifts": ["homework"], "ageQuote": null}, {"employer": null, "via": true, "title": "Merkambassadeur", "url": "https://www.youngcapital.nl/vacatures/8259493-parttime-merkambassadeur-in-amsterdam", "wage": null, "wageTxt": "\u2014", "basis": "NONE", "hours": 8, "hoursTxt": "8\u201340h", "km": 1.8, "kmTxt": "1.8 km", "band": "WALK", "cycle": 9, "tag": "NO-WAGE-STATED", "tagRank": 1, "shifts": ["weekend"], "ageQuote": null}, {"employer": "Flink", "via": false, "title": "Postbezorger", "url": "https://www.studentjob.nl/vacatures/5018523-bike-courier", "wage": null, "wageTxt": "\u2014", "basis": "NONE", "hours": null, "hoursTxt": "\u2014", "km": 4.6, "kmTxt": "4.6 km", "band": "CYCLE", "cycle": 22, "tag": "NO-WAGE-STATED", "tagRank": 1, "shifts": [], "ageQuote": "eat pay: Earn up to \u20ac16.19 per hour (including holiday allowance, at 21+ years old), plus bonuses, tips, and care"}, {"employer": "Hotelprofessionals - De L&#039;Europe Amsterdam", "via": false, "title": "Horeca / Catering", "url": "https://www.studentjob.nl/vacatures/6955525-oproepkracht-bediening-0-uren", "wage": null, "wageTxt": "\u2014", "basis": "NONE", "hours": null, "hoursTxt": "\u2014", "km": 3.9, "kmTxt": "3.9 km", "band": "CYCLE", "cycle": 19, "tag": "NO-WAGE-STATED", "tagRank": 1, "shifts": [], "ageQuote": null}, {"employer": "Hotelprofessionals - Hotel Asterisk", "via": false, "title": "Horeca / Catering", "url": "https://www.studentjob.nl/vacatures/7489942-parttime-receptionist-e-2-days", "wage": null, "wageTxt": "\u2014", "basis": "NONE", "hours": null, "hoursTxt": "\u2014", "km": 3.7, "kmTxt": "3.7 km", "band": "CYCLE", "cycle": 18, "tag": "NO-WAGE-STATED", "tagRank": 1, "shifts": [], "ageQuote": null}, {"employer": "Hotelprofessionals - Leonardo Boutique Museumhotel Amsterdam City Center", "via": false, "title": "HOST ( 3 NIGHTS A WEEK ) PT", "url": "https://www.studentjob.nl/vacatures/7649892-host-3-nights-a-week-pt", "wage": null, "wageTxt": "\u2014", "basis": "NONE", "hours": null, "hoursTxt": "\u2014", "km": 3.0, "kmTxt": "3 km", "band": "WALK", "cycle": 15, "tag": "NO-WAGE-STATED", "tagRank": 1, "shifts": [], "ageQuote": "WAT BIEDEN WIJ? Een aantrekkelijk bruto maandsalaris (vanaf 20 jaar). Reiskostenvergoeding vanaf 10"}, {"employer": "Vermaat", "via": false, "title": "Horeca medewerker", "url": "https://www.studentjob.nl/vacatures/7961398-zelfstandig-werkend-kok-rijksmuseum", "wage": null, "wageTxt": "\u2014", "basis": "NONE", "hours": null, "hoursTxt": "\u2014", "km": 3.2, "kmTxt": "3.2 km", "band": "CYCLE", "cycle": 16, "tag": "NO-WAGE-STATED", "tagRank": 1, "shifts": [], "ageQuote": null}, {"employer": "Hotelprofessionals - Clayton Hotel Amsterdam American", "via": false, "title": "Waiter (0 hours: Part-Time / Weekend Focus)", "url": "https://www.studentjob.nl/vacatures/8100420-waiter-0-hours-part-time-weekend-focus", "wage": null, "wageTxt": "\u2014", "basis": "NONE", "hours": null, "hoursTxt": "\u2014", "km": 2.8, "kmTxt": "2.8 km", "band": "WALK", "cycle": 14, "tag": "NO-WAGE-STATED", "tagRank": 1, "shifts": [], "ageQuote": null}, {"employer": "Vermaat", "via": false, "title": "Banquetingmedewerker Rijksmuseum", "url": "https://www.studentjob.nl/vacatures/8136561-banquetingmedewerker-rijksmuseum", "wage": null, "wageTxt": "\u2014", "basis": "NONE", "hours": null, "hoursTxt": "\u2014", "km": 3.2, "kmTxt": "3.2 km", "band": "CYCLE", "cycle": 16, "tag": "NO-WAGE-STATED", "tagRank": 1, "shifts": [], "ageQuote": null}, {"employer": "Vermaat", "via": false, "title": "Cateringmedewerker", "url": "https://www.studentjob.nl/vacatures/8259594-afwasser-rijksmuseum", "wage": null, "wageTxt": "\u2014", "basis": "NONE", "hours": null, "hoursTxt": "\u2014", "km": 3.2, "kmTxt": "3.2 km", "band": "CYCLE", "cycle": 16, "tag": "NO-WAGE-STATED", "tagRank": 1, "shifts": [], "ageQuote": null}, {"employer": null, "via": true, "title": "Postbezorger", "url": "https://www.youngcapital.nl/vacatures/5051273-direct-start-fietskoerier-e-bike-voor-flink-boodschappenbezorging", "wage": null, "wageTxt": "\u2014", "basis": "NONE", "hours": 1, "hoursTxt": "1\u201340h", "km": 5.5, "kmTxt": "5.5 km", "band": "CYCLE", "cycle": 27, "tag": "NO-WAGE-STATED", "tagRank": 1, "shifts": [], "ageQuote": "salaris: Verdien tot wel \u20ac16,19 per uur (inclusief vakantiegeld, bij 21 jaar en ouder), met doorgroeimogelijkheden. Flexi"}, {"employer": "FourParties", "via": false, "title": "Allround hospitality medewerker", "url": "https://www.studentjob.nl/vacatures/5448718-allround-hospitality-medewerker-bij-hotel-okura-amsterdam", "wage": 17.0, "wageTxt": "\u20ac17.00", "basis": "STATED", "hours": 8, "hoursTxt": "8\u201332h", "km": 3.6, "kmTxt": "3.6 km", "band": "CYCLE", "cycle": 18, "tag": "ADULT-RATE-ONLY", "tagRank": 2, "shifts": ["evening", "weekend"], "ageQuote": "Wat wij bieden Een salaris tussen \u20ac17,14 en \u20ac17,66 per uur (vanaf 21 jaar, afhankelijk van ervaring) Flexibele"}, {"employer": "FourParties", "via": false, "title": "High end horecamedewerker", "url": "https://www.studentjob.nl/vacatures/5448720-high-end-horecamedewerker-amsterdam", "wage": 17.0, "wageTxt": "\u20ac17.00", "basis": "STATED", "hours": 8, "hoursTxt": "8\u201332h", "km": 3.6, "kmTxt": "3.6 km", "band": "CYCLE", "cycle": 18, "tag": "ADULT-RATE-ONLY", "tagRank": 2, "shifts": ["evening", "weekend"], "ageQuote": "Wat wij bieden Een salaris tussen \u20ac17,14 en \u20ac17,66 per uur (vanaf 21 jaar, afhankelijk van ervaring) Flexibele w"}, {"employer": "Post NL", "via": false, "title": "Postbezorger", "url": "https://www.studentjob.nl/vacatures/8335407-parttime-pakketbezorger-licht-elektrisch-vrachtvoertuig", "wage": 14.99, "wageTxt": "\u20ac14.99", "basis": "STATED", "hours": null, "hoursTxt": "\u2014", "km": 6.6, "kmTxt": "6.6 km", "band": "CYCLE", "cycle": 32, "tag": "ADULT-RATE-ONLY", "tagRank": 2, "shifts": [], "ageQuote": "Je ontvangt reiskostenvergoeding; We betalen mee aan je pensioen (vanaf 18 jaar); Je krijgt 5 weken vakantie per jaar"}, {"employer": "CSU", "via": false, "title": "Schoonmaakster", "url": "https://www.studentjob.nl/vacatures/6882549-vakantiewerk-schoonmaak", "wage": 14.39, "wageTxt": "\u20ac14.39\u201318.62", "basis": "STATED", "hours": 1, "hoursTxt": "1\u201340h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "ADULT-RATE-ONLY", "tagRank": 2, "shifts": ["evening", "holiday", "weekend"], "ageQuote": "ect solliciteren. Wat wij bieden Een aantrekkelijk uurloon (afhankelijk van leeftijd en locatie) Wekelijkse uitbetaling Fl"}, {"employer": "Tzorg", "via": false, "title": "Huishoudelijke hulp", "url": "https://www.studentjob.nl/vacatures/6882560-vakantiewerk-huishoudelijke-hulp-in-jouw-regio", "wage": 13.5, "wageTxt": "\u20ac13.50\u201317.00", "basis": "STATED", "hours": 1, "hoursTxt": "1\u201340h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "ADULT-RATE-ONLY", "tagRank": 2, "shifts": ["evening", "holiday", "weekend"], "ageQuote": "u past. Wat wij bieden Een uurloon tussen \u20ac13,50 en \u20ac17,00 (afhankelijk van leeftijd) Bruto uurloon inclusief vakantiegeld"}, {"employer": null, "via": true, "title": "Medewerker", "url": "https://www.youngcapital.nl/vacatures/8249450-loop-jij-zonder-moeite-met-een-dienblad-medewerkers-gezocht-in-amsterdam", "wage": 7.5, "wageTxt": "\u20ac7.50\u201315.00", "basis": "STATED", "hours": 8, "hoursTxt": "8\u201340h", "km": 4.6, "kmTxt": "4.6 km", "band": "CYCLE", "cycle": 22, "tag": "ADULT-RATE-ONLY", "tagRank": 2, "shifts": ["evening", "weekend"], "ageQuote": "ur Wat wij bieden Een aantrekkelijk uurloon tot \u20ac 15,- (afhankelijk van leeftijd en ervaring); Een dynamische en afwiss"}, {"employer": "De H M", "via": true, "title": "Supportmedewerker", "url": "https://www.youngcapital.nl/vacatures/8250047-werk-avonddiensten-bij-de-h-m-in-amsterdam-als-supportmedewerker", "wage": 7.5, "wageTxt": "\u20ac7.50\u201314.99", "basis": "STATED", "hours": 8, "hoursTxt": "8\u201340h", "km": 3.9, "kmTxt": "3.9 km", "band": "CYCLE", "cycle": 19, "tag": "ADULT-RATE-ONLY", "tagRank": 2, "shifts": ["evening", "holiday", "weekend"], "ageQuote": "te werken. Wat wij bieden Een salaris tot \u20ac 14,99 per uur, afhankelijk van je leeftijd; Toeslag voor avond uren (vanaf 22:00)"}, {"employer": "Pure Pet Food", "via": false, "title": "Brand Ambassador", "url": "https://www.studentjob.nl/vacatures/6562875-promotiemedewerker-dierenvoeding", "wage": 12.5, "wageTxt": "\u20ac12.50\u201350.00", "basis": "DERIVED", "hours": 8, "hoursTxt": "8\u201340h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "WAGE-UNRELIABLE", "tagRank": 3, "shifts": ["holiday", "weekend"], "ageQuote": null}, {"employer": "Pure Pet Food", "via": false, "title": "Sales Medewerker", "url": "https://www.studentjob.nl/vacatures/8136158-brand-ambassador-sales-medewerker-bij-pure-pet-food", "wage": 12.5, "wageTxt": "\u20ac12.50\u201350.00", "basis": "DERIVED", "hours": 8, "hoursTxt": "8\u201340h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "WAGE-UNRELIABLE", "tagRank": 3, "shifts": ["holiday", "weekend"], "ageQuote": null}, {"employer": "Hotelprofessionals", "via": false, "title": "Werken in Hotellerie", "url": "https://www.studentjob.nl/vacatures/8061523-kom-werken-in-de-hotel-sector-bij-hotelprofessionals", "wage": 4.5, "wageTxt": "\u20ac4.50\u201332.24", "basis": "STATED", "hours": 4, "hoursTxt": "4\u201340h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "WAGE-UNRELIABLE", "tagRank": 3, "shifts": ["evening", "holiday", "weekend"], "ageQuote": null}, {"employer": null, "via": true, "title": "Delivery driver", "url": "https://www.youngcapital.nl/vacatures/2253517-work-as-a-part-time-delivery-driver-at-hellofresh-in-diemen", "wage": 15.1, "wageTxt": "\u20ac15.10\u201317.10", "basis": "STATED", "hours": 14, "hoursTxt": "14\u201324h", "km": 9.4, "kmTxt": "9.4 km", "band": "TRANSIT", "cycle": 46, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": ["evening", "weekend"], "ageQuote": null}, {"employer": "Nespresso", "via": false, "title": "Verkoopmedewerker", "url": "https://www.studentjob.nl/vacatures/4005167-verkoopmedewerker-nespresso-amstelveen", "wage": 15.0, "wageTxt": "\u20ac15.00", "basis": "DERIVED", "hours": 16, "hoursTxt": "16\u201332h", "km": 6.6, "kmTxt": "6.6 km", "band": "CYCLE", "cycle": 32, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": ["evening", "weekend"], "ageQuote": null}, {"employer": "Pamba Textielreiniging bv", "via": false, "title": "Chauffeur", "url": "https://www.studentjob.nl/vacatures/8299311-een-leuke-bijbaan-als-chauffeur-bestelauto-in-amsterdam-bijbaan-parttime", "wage": 15.0, "wageTxt": "\u20ac15.00\u201317.75", "basis": "STATED", "hours": 8, "hoursTxt": "8\u201315h", "km": 6.6, "kmTxt": "6.6 km", "band": "CYCLE", "cycle": 32, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": ["weekend"], "ageQuote": null}, {"employer": null, "via": true, "title": "Hospitality medewerker", "url": "https://www.youngcapital.nl/vacatures/8230953-boost-je-inkomen-hospitality-medewerker-op-oproepbasis-in-amsterdam", "wage": 15.0, "wageTxt": "\u20ac15.00", "basis": "STATED", "hours": 8, "hoursTxt": "8\u201340h", "km": 4.6, "kmTxt": "4.6 km", "band": "CYCLE", "cycle": 22, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": ["evening", "weekend"], "ageQuote": null}, {"employer": "NS Groep N.V.", "via": false, "title": "Horeca medewerker", "url": "https://www.studentjob.nl/vacatures/7594608-bijbaan-bij-julia-s-amsterdam-zuid", "wage": 14.99, "wageTxt": "\u20ac14.99", "basis": "STATED", "hours": 3, "hoursTxt": "3\u201310h", "km": 3.3, "kmTxt": "3.3 km", "band": "CYCLE", "cycle": 16, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": [], "ageQuote": null}, {"employer": "NS Groep N.V.", "via": false, "title": "Commercieel medewerker", "url": "https://www.studentjob.nl/vacatures/7594610-verkoopmedewerker-julia-s-amsterdam-zuid", "wage": 14.99, "wageTxt": "\u20ac14.99", "basis": "STATED", "hours": 8, "hoursTxt": "8\u201338h", "km": 3.3, "kmTxt": "3.3 km", "band": "CYCLE", "cycle": 16, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": [], "ageQuote": null}, {"employer": "NS Groep N.V.", "via": false, "title": "Verkoopmedewerker", "url": "https://www.studentjob.nl/vacatures/7594611-verkoopmedewerker-kiosk-amsterdam-zuid-rai", "wage": 14.99, "wageTxt": "\u20ac14.99", "basis": "STATED", "hours": 4, "hoursTxt": "4\u201332h", "km": 3.3, "kmTxt": "3.3 km", "band": "CYCLE", "cycle": 16, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": [], "ageQuote": null}, {"employer": null, "via": true, "title": "Store Associate", "url": "https://www.youngcapital.nl/vacatures/8238778-start-as-a-part-time-store-associate-in-amsterdam", "wage": 14.71, "wageTxt": "\u20ac14.71", "basis": "STATED", "hours": 16, "hoursTxt": "16\u201320h", "km": 3.6, "kmTxt": "3.6 km", "band": "CYCLE", "cycle": 18, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": ["holiday", "weekend"], "ageQuote": null}, {"employer": null, "via": true, "title": "Floormanager", "url": "https://www.youngcapital.nl/vacatures/8249449-parttime-floormanager-in-amsterdam-bijlmer", "wage": 14.45, "wageTxt": "\u20ac14.45\u201317.49", "basis": "DERIVED", "hours": 16, "hoursTxt": "16\u201324h", "km": 9.2, "kmTxt": "9.2 km", "band": "TRANSIT", "cycle": 45, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": ["weekend"], "ageQuote": null}, {"employer": "NS Groep N.V.", "via": false, "title": "Horeca / Catering", "url": "https://www.studentjob.nl/vacatures/8208316-floormanager-kiosk-amsterdam-zuid", "wage": 14.45, "wageTxt": "\u20ac14.45\u201317.49", "basis": "DERIVED", "hours": 12, "hoursTxt": "12\u201332h", "km": 3.3, "kmTxt": "3.3 km", "band": "CYCLE", "cycle": 16, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": [], "ageQuote": null}, {"employer": null, "via": true, "title": "Event Security", "url": "https://www.youngcapital.nl/vacatures/7870922-event-security-steward-in-amsterdam-op-de-vetste-events", "wage": 13.25, "wageTxt": "\u20ac13.25\u201314.99", "basis": "STATED", "hours": 4, "hoursTxt": "4\u201312h", "km": 8.6, "kmTxt": "8.6 km", "band": "TRANSIT", "cycle": 42, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": ["evening", "weekend"], "ageQuote": null}, {"employer": null, "via": true, "title": "Steward", "url": "https://www.youngcapital.nl/vacatures/8249448-parttime-steward-in-amsterdam", "wage": 13.25, "wageTxt": "\u20ac13.25\u201314.99", "basis": "STATED", "hours": 4, "hoursTxt": "4\u201312h", "km": 8.6, "kmTxt": "8.6 km", "band": "TRANSIT", "cycle": 42, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": ["evening", "weekend"], "ageQuote": null}, {"employer": "Easy Way", "via": false, "title": "Hiker", "url": "https://www.studentjob.nl/vacatures/7636977-wordt-hiker-auto-s-vervoeren-bij-easy-way", "wage": 11.62, "wageTxt": "\u20ac11.62\u201316.24", "basis": "STATED", "hours": 1, "hoursTxt": "1\u201340h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": ["holiday", "weekend"], "ageQuote": null}, {"employer": "Pepperminds", "via": false, "title": "Commercieel medewerker", "url": "https://www.studentjob.nl/vacatures/5107490-salespromotor-promotiemedewerker-bijbaan", "wage": 11.25, "wageTxt": "\u20ac11.25\u201318.75", "basis": "DERIVED", "hours": null, "hoursTxt": "\u2014", "km": 13.3, "kmTxt": "13.3 km", "band": "TRANSIT", "cycle": 65, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": [], "ageQuote": null}, {"employer": "Workster", "via": false, "title": "Logistiek medewerker", "url": "https://www.studentjob.nl/vacatures/7427784-logistiek-medewerker", "wage": 11.0, "wageTxt": "\u20ac11.00\u201322.00", "basis": "STATED", "hours": 10, "hoursTxt": "10\u201330h", "km": null, "kmTxt": "\u2014", "band": "UNKNOWN", "cycle": null, "tag": "FLOOR-RISK", "tagRank": 4, "shifts": ["holiday"], "ageQuote": null}];
+const TAGMETA = {"ABOVE-MINIMUM": ["Above the adult minimum", "ok"], "NO-WAGE-STATED": ["No wage stated", "neutral"], "ADULT-RATE-ONLY": ["Age-scaled", "bad"], "WAGE-UNRELIABLE": ["Unreliable figure", "warn"], "FLOOR-RISK": ["At the statutory floor", "warn"], "BELOW-STATUTORY": ["Below legal minimum", "bad"]};
+const WANTED = ["weekend","evening"];
+const tbody = document.querySelector("#t tbody");
+let sortKey = "tag", sortDir = 1;
+
+function cell(d){
+  const emp = d.employer ? esc(d.employer) : '<em class="unk">not stated</em>';
+  const via = d.via ? '<span class="via">via agency</span>' : '';
+  const meta = TAGMETA[d.tag] || [d.tag,"neutral"];
+  const cyc = d.cycle != null ? `<span class="sub">~${d.cycle} min bike</span>` : '';
+  const basis = d.basis === "STATED" ? "stated" : (d.basis === "DERIVED" ? "derived" : "");
+  const shifts = d.shifts.length
+    ? d.shifts.map(s => `<span class="sh ${WANTED.includes(s)?'sh--hit':''}">${esc(s)}</span>`).join("")
+    : '<span class="sh">not stated</span>';
+  return `<tr>
+    <td class="emp" data-l="Employer">${emp}${via}</td>
+    <td class="role" data-l="Role"><a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.title)}</a></td>
+    <td data-l="Verdict"><span class="chip chip--${meta[1]}">${esc(meta[0])}</span></td>
+    <td class="n" data-l="Rate">${esc(d.wageTxt)}${basis?`<span class="sub">${basis}</span>`:''}</td>
+    <td class="n" data-l="Hours">${esc(d.hoursTxt)}</td>
+    <td class="n" data-l="Distance">${esc(d.kmTxt)}${cyc}</td>
+    <td data-l="Shifts">${shifts}</td>
+  </tr>`;
+}
+function esc(s){const d=document.createElement("div");d.textContent=s==null?"":s;return d.innerHTML;}
+
+function val(d,k){
+  if(k==="tag") return d.tagRank;
+  if(k==="shifts") return d.shifts.filter(s=>WANTED.includes(s)).length ? 0 : 1;
+  if(k==="employer") return (d.employer||"\uffff").toLowerCase();
+  if(k==="title") return (d.title||"").toLowerCase();
+  return d[k];
+}
+function render(){
+  // A missing number NEVER sorts as zero, in either direction: unknowns always land last.
+  const rows = DATA.slice().sort((a,b)=>{
+    const av=val(a,sortKey), bv=val(b,sortKey);
+    const an=(av===null||av===undefined), bn=(bv===null||bv===undefined);
+    if(an&&bn) return a.tagRank-b.tagRank;
+    if(an) return 1;
+    if(bn) return -1;
+    if(av<bv) return -1*sortDir;
+    if(av>bv) return 1*sortDir;
+    return a.tagRank-b.tagRank;
+  });
+  tbody.innerHTML = rows.map(cell).join("");
+  const _ms = document.getElementById("ms");
+  if (_ms && _ms.value !== sortKey && Array.from(_ms.options).some(o=>o.value===sortKey)) _ms.value = sortKey;
+  document.querySelectorAll("#t th").forEach(th=>{
+    if(th.dataset.k===sortKey){
+      th.setAttribute("aria-sort", sortDir===1?"ascending":"descending");
+      th.querySelector(".ar").textContent = sortDir===1?"\u2191":"\u2193";
+    } else { th.removeAttribute("aria-sort"); th.querySelector(".ar").textContent="\u2195"; }
+  });
+}
+document.querySelectorAll("#t th").forEach(th=>{
+  th.querySelector("button").addEventListener("click",()=>{
+    const k=th.dataset.k;
+    if(k===sortKey){ sortDir*=-1; }
+    // Rate and distance are most useful highest/nearest first on the first click.
+    else { sortKey=k; sortDir = (k==="wage") ? -1 : 1; }
+    render();
+  });
+});
+const ms = document.getElementById("ms");
+ms.addEventListener("change", () => {
+  sortKey = ms.value;
+  sortDir = (sortKey === "wage") ? -1 : 1;
+  render();
+});
+render();
+ms.value = sortKey;
+</script>
+</body>
+</html>
